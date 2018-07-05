@@ -1,0 +1,13 @@
+body {
+	background-color: #cccccc;
+}
+
+.container {
+	margin: auto;
+	margin: 20px;
+	max-width: 100%;
+}
+
+.border-left {
+	border-color: #999 !important;
+}
