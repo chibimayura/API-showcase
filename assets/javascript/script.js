@@ -1,7 +1,7 @@
-var tag, gifImage, rate, newButton, newDiv;
-var topics = ["bunnies", "hamsters", "cats", "bears", "otters", "puppies", "archer", "anime"];
+var tag, gifImage, rate, newButton, newDiv, stillGif, animateGif, newTopic;
+var topics = ["bunny", "hamster", "cats", "bears", "otters", "puppies", "archer", "pokemon", "ghibili"];
 var getTen = 10, randomGif = 0;
-var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=BYL0n8m6wTFF5oyVDZTsiQwn6MgOEKDi&q=";
+var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=BYL0n8m6wTFF5oyVDZTsiQwn6MgOEKDi&limit=1000&q=";
 
 var tagArea = $(".tagArea");
 var searchArea = $(".searchArea");
@@ -15,22 +15,58 @@ for(var i = 0; i < topics.length; i++){
 	tagArea.append(newButton);
 }
 
-$("button").on("click", function(){
+$(document).on("click", ".tagArea button",function(){
 	gifArea.empty();
 	tag = $(this).text();
 
-	for(var i = 0; i < getTen; i++){
-		$.ajax({
-			url: queryURL + tag,
-			method: "GET"
-		}).then(function(response){
-			console.log(response);
-			randomGif = Math.floor(Math.random()*response.data.length);
-			newDiv = $("<div>").attr("class", "float-left border");
-			gifImage = $("<img>").attr("src", response.data[randomGif].images.fixed_height.url).attr("class", "p-5");
-			rate = $("<p>").text("Rating: " + response.data[randomGif].rating).attr("class", "text-center");
-			newDiv.append(gifImage, rate);
-			gifArea.append(newDiv);
-		});
+	$.ajax({
+		url: queryURL + tag,
+		method: "GET"
+	}).then(function(response){
+		console.log(response);
+		for(var i = 0; i < getTen; i++){
+		randomGif = Math.floor(Math.random()*response.data.length);
+		stillGif = response.data[randomGif].images.original_still.url;
+		animateGif = response.data[randomGif].images.original.url;
+		newDiv = $("<div>").attr("class", "float-left m-2");
+		gifImage = $("<img>").attr({
+			"src" : stillGif, 
+			"data-state" : "still", 
+			"data-still" : stillGif, 
+			"data-animate" : animateGif,
+			"class" : "p-5 fixedHW"
+			});
+		rate = $("<p>").text("Rating: " + response.data[randomGif].rating).attr("class", "text-center font-weight-bold");
+		newDiv.append(gifImage, rate);
+		gifArea.append(newDiv);
 	}
+	});
+});
+
+$(document).on("click", "img", function(){
+	var state = $(this).attr("data-state");
+	if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+    	$(this).attr("src", $(this).attr("data-still"));
+    	$(this).attr("data-state", "still");
+    }
+});
+
+searchArea.on("click", "button", function(){
+	event.preventDefault();
+
+	if($("input").val() !=""){
+		newTopic = $("input").val();
+		topics.push(newTopic);
+
+
+		newButton = $("<button>");
+		newButton.text(newTopic).attr("class", "btn btn-info m-1");
+
+		tagArea.append(newButton);
+	}
+
+	$("input").val("");
 });
