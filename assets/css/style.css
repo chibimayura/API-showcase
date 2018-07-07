@@ -1,13 +1,32 @@
 body {
 	background-color: #cccccc;
+	margin: auto;
 }
 
 .container {
-	margin: auto;
-	margin: 20px;
 	max-width: 100%;
 }
 
 .border-left {
 	border-color: #999 !important;
+}
+
+input[type="text"] {
+	width: 400px;
+}
+
+@media screen and (max-width: 640px){
+	input[type="text"] {
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 768px){
+	input[type="text"] {
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 980px){
+	
 }
