@@ -31,10 +31,19 @@ input[type="text"] {
 }
 
 .favArea{
-	border-left: 2px solid #66666666;
+	border-left: 2px dashed #17a2b866;
 	padding: 10px 20px;
-	background-color: #ffffff55;
+	background-color: #17a2b8aa;
 	position: fixed;
+	height: 100%;
+	width: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	right:0;
+}
+
+.favArea img {
+	margin: 10px 0;
 }
 
 .col-lg-10 {
@@ -46,7 +55,24 @@ input[type="text"] {
 }
 
 @media screen and (max-width: 640px){
+	.favArea{
+		border-top: 2px dashed #17a2b866;
+		border-left: none;
+		left: 0;
+		bottom: 0;
+		overflow-y: hidden;
+		overflow-x: auto;
+		height: 360px;
+		width: 100%;
+		display: inline-block;
+		white-space: nowrap;
+	}
+	.favArea img{
+		margin-right: 20px;
+	}
+	.gifArea {
 
+	}
 }
 
 @media screen and (max-width: 768px){
