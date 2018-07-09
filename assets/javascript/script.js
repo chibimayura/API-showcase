@@ -28,17 +28,20 @@ $(document).on("click", ".tagArea button",function(){
 		randomGif = Math.floor(Math.random()*response.data.length);
 		stillGif = response.data[randomGif].images.original_still.url;
 		animateGif = response.data[randomGif].images.original.url;
-		newDiv = $("<div>").attr("class", "float-left m-2");
+		newDiv = $("<div>").attr("class", "col-sm-2 my-2");
 		gifImage = $("<img>").attr({
 			"src" : stillGif, 
 			"data-state" : "still", 
 			"data-still" : stillGif, 
 			"data-animate" : animateGif,
-			"class" : "p-5 fixedHW"
+			"class" : "p-1 fixedHW"
 			});
 		rate = $("<p>").text("Rating: " + response.data[randomGif].rating).attr("class", "text-center font-weight-bold");
-		newDiv.append(gifImage, rate);
+		newDiv.append(gifImage, rate).hide();
 		gifArea.append(newDiv);
+		$(".gifArea div").each(function(i){
+			$(this).delay(400*i).fadeIn(2000);
+		});
 	}
 	});
 });

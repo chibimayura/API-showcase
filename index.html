@@ -7,32 +7,46 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-	<div class="container my-5">
-		<div class="row mb-4">
-			<div class="col-lg-8 col-md-8 col-sm-12">
-				<div class="tagArea">
-					<!-- insert easily accessible tags to search -->
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-12 px-4">
+	<div class="container">
+		<div class="row">
+			<!-- search and tags are aligned in the same row -->
+			<div class="position-static col-lg-10 col-md-10 col-sm-12 px-4 m-auto text-center">
+				<!-- search area -->
 				<div class="searchArea">
 					<form>
 						<h4>Add a tag</h1>
 						<input type="text">
-						<button class="btn btn-info">Submit</button>
+						<button class="btn">Submit</button>
 					</form>
+				</div>
+
+				<!-- tag area is in a new row under search area -->
+				<div class="row mb-4 text-center m-auto">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="tagArea">
+							<!-- insert easily accessible tags to search -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- add favorite giphy area -->
+			<div class="col-lg-2 col-md-2, col-sm-12 float-right">
+				<div class="favArea">
+					<h4>Favorite Giphy</h4>
+					<hr>
+					<img src="http://via.placeholder.com/250x250">
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-8 col-md-8 col-sm-12">
-				<div class="gifArea">
-					<!--insert gif images-->
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-12 px-4">
-				<div class="favArea">
-					<h4>Favorite Giphy</h4>
+
+		<!-- where giphys are randomly generated -->
+		<div class="row mt-4 ml-2">
+			<div class="col-lg-10 col-md-10 col-sm-12">
+				<div class="row">
+					<div class="gifArea row text-center">
+						<!--insert gif images-->
+					</div>
 				</div>
 			</div>
 		</div>
