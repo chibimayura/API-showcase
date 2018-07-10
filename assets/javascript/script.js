@@ -6,7 +6,7 @@ var getTen = 10, randomGif = 0;
 
 var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=BYL0n8m6wTFF5oyVDZTsiQwn6MgOEKDi&limit=1000&q=";
 
-var favImg = "assets/images/fav.png",
+var	favImg = "assets/images/fav.png",
 	unfavImg = "assets/images/unfav.png";
 
 var tagArea = $(".tagArea");
