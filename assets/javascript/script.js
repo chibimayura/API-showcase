@@ -1,7 +1,13 @@
 var tag, gifImage, rate, newButton, newDiv, stillGif, animateGif, newTopic;
+
 var topics = ["bunny", "hamster", "cats", "bears", "otters", "puppies", "archer", "pokemon", "ghibili"];
+
 var getTen = 10, randomGif = 0;
+
 var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=BYL0n8m6wTFF5oyVDZTsiQwn6MgOEKDi&limit=1000&q=";
+
+var favImg = "assets/images/fav.png",
+	unfavImg = "assets/images/unfav.png";
 
 var tagArea = $(".tagArea");
 var searchArea = $(".searchArea");
@@ -28,7 +34,7 @@ $(document).on("click", ".tagArea button",function(){
 		randomGif = Math.floor(Math.random()*response.data.length);
 		stillGif = response.data[randomGif].images.original_still.url;
 		animateGif = response.data[randomGif].images.original.url;
-		newDiv = $("<div>").attr("class", "col-sm-2 my-2");
+		newDiv = $("<div>").attr("class", "col-lg-2 col-sm-2 my-2");
 		gifImage = $("<img>").attr({
 			"src" : stillGif, 
 			"data-state" : "still", 
