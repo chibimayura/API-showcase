@@ -13,12 +13,18 @@ body {
 }
 
 .gifArea div {
-	border: 2px solid #035;
 	margin: auto !important;
 	margin-bottom: 40px !important;
-	height: 400px;;
+	height: 350px;
+	width: 300px;
 	background-color: #ffffff66;
 	font-size: 20px;
+	white-space: normal;
+}
+
+.borderDiv {
+	border: 2px solid #999999aa;
+	transition: border 60s;
 }
 
 input[type="text"] {

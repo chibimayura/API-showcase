@@ -56,7 +56,7 @@ $(document).on("click", ".tagArea button",function(){
 		newDiv.append(gifImage, rate).hide();
 		gifArea.append(newDiv);
 		$(".gifArea div").each(function(i){
-			$(this).delay(400*i).fadeIn(2000);
+			$(this).delay(400*i).fadeIn(2000).attr("class", "borderDiv");
 		});
 	}
 	});
