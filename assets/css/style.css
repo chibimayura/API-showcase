@@ -24,7 +24,7 @@ body {
 
 .borderDiv {
 	border: 2px solid #999999aa;
-	transition: border 60s;
+	transition: border 30s;
 }
 
 input[type="text"] {

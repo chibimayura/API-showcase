@@ -1,4 +1,4 @@
-var tag, gifImage, rate, newButton, newDiv, stillGif, animateGif, newTopic, favBtn;
+var tag, gifImage, rate, newButton, newDiv, stillGif, animateGif, newTopic, favBtn, newSpan;
 
 var topics = ["bunny", "hamster", "cats", "bears", "otters", "puppies", "archer", "pokemon", "ghibili"];
 var favorite = [];
@@ -30,7 +30,7 @@ $(document).on("click", ".tagArea button",function(){
 		url: queryURL + tag,
 		method: "GET"
 	}).then(function(response){
-		console.log(response);
+		$("form").append("<h6>Click on the image and see what happens!</h6>")
 		for(var i = 0; i < getTen; i++){
 		randomGif = Math.floor(Math.random()*response.data.length);
 		stillGif = response.data[randomGif].images.original_still.url;
