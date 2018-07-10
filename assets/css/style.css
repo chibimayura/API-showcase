@@ -4,6 +4,7 @@ html, body {
 }
 body {
 	background-color: #cccccc;
+	background-image: url("../images/memphis-colorful.png");
 	margin: auto;
 }
 
@@ -11,17 +12,13 @@ body {
 	max-width: 100% !important;
 }
 
-p {
-	font-size: 20px;
-}
-
 .gifArea div {
 	border: 2px solid #035;
 	margin: auto !important;
-	margin-bottom: 20px !important;
-	width: 300px;
-	height: 350px;
+	margin-bottom: 40px !important;
+	height: 400px;
 	background-color: #ffffff66;
+	font-size: 20px;
 }
 
 input[type="text"] {
@@ -34,12 +31,13 @@ input[type="text"] {
 	margin: auto;
 	width: 250px;
 	height: 250px;
+	margin: 10px 0;
 }
 
 .favArea {
-	border-left: 2px dashed #17a2b866;
+	border-left: 2px dashed #f19b8e66;
 	padding: 10px 20px;
-	background-color: #17a2b8aa;
+	background-color: #f19b8eaa;
 	position: fixed;
 	height: 100%;
 	width: 300px;
@@ -51,6 +49,8 @@ input[type="text"] {
 
 .favArea img {
 	margin: 10px 0;
+	width: 250px;
+	height: 250px;
 }
 
 .col-lg-10 {
@@ -61,7 +61,35 @@ input[type="text"] {
 	max-width: 20%;
 }
 
-@media screen and (max-width: 1135px){
+.favBtn {
+	position: relative;
+	float: right;
+}
+
+.btn {
+	background-color: #f19b8e;
+	color: #000;
+	font-weight: bold;
+}
+
+.btn-dark:hover {
+	background-color: #737373;
+}
+
+.btn-info:hover {
+	background-color: #1cc8e3;
+}
+
+.gif:hover {
+	box-shadow: 5px 5px #66666666;
+}
+
+@media screen and (max-width: 1355px){
+	.container {
+		height: auto;
+		margin-bottom: 200px;
+		overflow: hidden; 
+	}
 	.favArea{
 		border-top: 2px dashed #17a2b866;
 		border-left: none;
@@ -93,8 +121,12 @@ input[type="text"] {
 	}
 	.gifArea {
 		position: static;
+		margin-bottom: 100px;
 	}
 
+	.gifArea div {
+		height: 250px;
+	}
 	.col-sm-2 {
 		max-width: 25%;
 	}

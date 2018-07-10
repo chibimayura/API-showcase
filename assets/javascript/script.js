@@ -1,6 +1,7 @@
-var tag, gifImage, rate, newButton, newDiv, stillGif, animateGif, newTopic;
+var tag, gifImage, rate, newButton, newDiv, stillGif, animateGif, newTopic, favBtn;
 
 var topics = ["bunny", "hamster", "cats", "bears", "otters", "puppies", "archer", "pokemon", "ghibili"];
+var favorite = [];
 
 var getTen = 10, randomGif = 0;
 
@@ -12,7 +13,7 @@ var unfavImg = "assets/images/unfav.png";
 var tagArea = $(".tagArea");
 var searchArea = $(".searchArea");
 var gifArea = $(".gifArea");
-var favArea = $(".favArea");
+var favArea = $(".favGifArea");
 
 for(var i = 0; i < topics.length; i++){
 	newButton = $("<button>");
@@ -40,9 +41,18 @@ $(document).on("click", ".tagArea button",function(){
 			"data-state" : "still", 
 			"data-still" : stillGif, 
 			"data-animate" : animateGif,
-			"class" : "p-1 fixedHW"
+			"class" : "fixedHW gif"
 			});
 		rate = $("<p>").text("Rating: " + response.data[randomGif].rating).attr("class", "text-center font-weight-bold");
+		favBtn = $("<img>").attr({
+			"src" : unfavImg,
+			"alt" : "add to favorite",
+			"class" : "favBtn",
+			"data-boolean" : "false",
+			"data-fav" : favImg,
+			"data-unfav" : unfavImg
+			});
+		rate.append(favBtn)
 		newDiv.append(gifImage, rate).hide();
 		gifArea.append(newDiv);
 		$(".gifArea div").each(function(i){
@@ -52,7 +62,7 @@ $(document).on("click", ".tagArea button",function(){
 	});
 });
 
-$(document).on("click", "img", function(){
+$(document).on("click", ".gif", function(){
 	var state = $(this).attr("data-state");
 	if (state === "still") {
         $(this).attr("src", $(this).attr("data-animate"));
@@ -78,4 +88,23 @@ searchArea.on("click", "button", function(){
 	}
 
 	$("input").val("");
+});
+
+$(document).on("click", ".favBtn", function(){
+	var newFavImg = $("<img>");
+	if($(this).attr("data-boolean") == "false"){
+		$(this).attr("src", $(this).attr("data-fav"));
+		$(this).attr("data-boolean", "true");
+
+		newFavImg.attr({
+			"src" : $(this).parent().siblings(".gif").attr("data-still"),
+			"data-still" : $(this).parent().siblings(".gif").attr("data-still"),
+			"data-animate" : $(this).parent().siblings(".gif").attr("data-animate"),
+			"data-state" : "still",
+			"class" : "gif"
+		});
+
+		favorite.push(newFavImg);
+		favArea.append(favorite);
+	}
 });
