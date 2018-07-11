@@ -3,6 +3,8 @@ var tag, gifImage, rate, newButton, newDiv, stillGif, animateGif, newTopic, favB
 var topics = ["bunny", "hamster", "cats", "bears", "otters", "puppies", "archer", "pokemon", "ghibili"];
 var favorite = [];
 
+var revealText = false;
+
 var getTen = 10, randomGif = 0;
 
 var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=BYL0n8m6wTFF5oyVDZTsiQwn6MgOEKDi&limit=1000&q=";
@@ -15,6 +17,8 @@ var searchArea = $(".searchArea");
 var gifArea = $(".gifArea");
 var favArea = $(".favGifArea");
 
+
+
 for(var i = 0; i < topics.length; i++){
 	newButton = $("<button>");
 	newButton.text(topics[i]).attr("class", "btn btn-info m-1");
@@ -26,11 +30,15 @@ $(document).on("click", ".tagArea button",function(){
 	gifArea.empty();
 	tag = $(this).text();
 
+	if(!revealText){
+		revealText = true;
+		$("form").append("<h6>Click on the image and see what happens!</h6>");
+	}
+
 	$.ajax({
 		url: queryURL + tag,
 		method: "GET"
 	}).then(function(response){
-		$("form").append("<h6>Click on the image and see what happens!</h6>")
 		for(var i = 0; i < getTen; i++){
 		randomGif = Math.floor(Math.random()*response.data.length);
 		stillGif = response.data[randomGif].images.original_still.url;
